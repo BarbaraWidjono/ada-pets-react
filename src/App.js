@@ -35,9 +35,10 @@ class App extends Component {
   }
 
   createNewPet = (newPet) => {
-    console.log("Inside App.js, createNewPet");
-    console.log(newPet);
     const pets = this.state.petList;
+    let newID = pets[pets.length - 1]["id"] + 1;
+    newPet["id"] = newID;
+
     pets.push(newPet);
     this.setState({petList: pets});
   }

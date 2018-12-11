@@ -9,6 +9,8 @@ class NewPetForm extends Component {
     super(props);
 
     this.state = {
+      about: "",
+      location: "",
       name: "",
       images: "",
       species: "",
@@ -27,17 +29,29 @@ class NewPetForm extends Component {
     this.setState({species: event.target.value})
   }
 
+  addAbout = (event) => {
+    this.setState({about: event.target.value})
+  }
+
+  addLocation = (event) => {
+    this.setState({location: event.target.value})
+  }
+
   onFormSubmit = (event) => {
     event.preventDefault();
 
     const newPet = {
       name: this.state.name,
       images: this.state.images,
-      species: this.state.species
+      species: this.state.species,
+      location: this.state.location,
+      about: this.state.about,
     }
 
     if(this.state.name.length > 0 && this.state.images.length > 0 && this.state.species.length > 0){
       this.setState({
+        about: "",
+        location: "",
         name: "",
         images: "",
         species: "",
@@ -75,6 +89,22 @@ class NewPetForm extends Component {
               name="species"
               value={this.state.species}
               onChange={this.addSpecies}
+            />
+        </div>
+        <div>
+          <label htmlFor="about">About:</label>
+            <input
+              name="about"
+              value={this.state.about}
+              onChange={this.addAbout}
+            />
+        </div>
+        <div>
+          <label htmlFor="location">Location:</label>
+            <input
+              name="location"
+              value={this.state.location}
+              onChange={this.addLocation}
             />
         </div>
         <input className="btn btn-success new-pet-form--submit" type="submit" name="submit" value="Add a Pet" />
