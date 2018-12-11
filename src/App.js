@@ -24,6 +24,10 @@ class App extends Component {
     let index = this.state.petList.findIndex(obj => obj.id === id);
     let newList = [...this.state.petList.slice(0,index), ...this.state.petList.slice(index+1)];
     this.setState({petList: newList})
+
+    if(this.state.currentPet && this.state.currentPet.id === id){
+      this.setState({currentPet: null})
+    }
   }
 
   setCurrentPet = (pet) => {
