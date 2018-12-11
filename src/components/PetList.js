@@ -11,9 +11,11 @@ const PetList = (props) => {
 
   // detailsCallback = {() => details(pet)}/> is a 'closure', therefore 'pet' from petCollection is accessible and can be passed as an argument to details()
   const details = (pet) => {
-    console.log("Inside the PetList");
-    console.log(pet);
     petDetailsCallback(pet)
+  }
+
+  const removeAPet = (id) => {
+    props.removingPet(id);
   }
 
   const petCollection = pets.map((pet, i) => {
@@ -24,7 +26,8 @@ const PetList = (props) => {
       species={pet.species}
       about={pet.about}
       location={pet.location}
-      detailsCallback = {() => details(pet)}/>
+      detailsCallback = {() => details(pet)}
+      removePetCallback = {removeAPet}/>
   })
 
   return (

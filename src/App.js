@@ -20,11 +20,14 @@ class App extends Component {
       }
   }
 
+  removesPet = (id) => {
+    let index = this.state.petList.findIndex(obj => obj.id === id);
+    let newList = [...this.state.petList.slice(0,index), ...this.state.petList.slice(index+1)];
+    this.setState({petList: newList})
+  }
+
   setCurrentPet = (pet) => {
     this.setState({currentPet: pet})
-    // console.log("Inside setCurrentPet inside App.js");
-    // console.log(pet);
-    // console.log(this.state.currentPet);
   }
 
   render() {
@@ -48,7 +51,7 @@ class App extends Component {
           {pet}
         </section>
         <section className="pet-list-wrapper">
-          <PetList petInfo = {this.state.petList} petDetails = {this.setCurrentPet}/>
+          <PetList petInfo = {this.state.petList} petDetails = {this.setCurrentPet}removingPet = {this.removesPet}/>
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */ }
