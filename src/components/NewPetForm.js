@@ -12,7 +12,7 @@ class NewPetForm extends Component {
       about: "",
       location: "",
       name: "",
-      images: "",
+      images: [],
       species: "",
     };
   }
@@ -22,7 +22,9 @@ class NewPetForm extends Component {
   }
 
   addImage = (event) => {
-    this.setState({images: event.target.value})
+    let imagesArr = this.state.images;
+    imagesArr.push(event.target.value);
+    this.setState({images: imagesArr});
   }
 
   addSpecies = (event) => {
