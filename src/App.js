@@ -34,6 +34,14 @@ class App extends Component {
     this.setState({currentPet: pet})
   }
 
+  createNewPet = (newPet) => {
+    console.log("Inside App.js, createNewPet");
+    console.log(newPet);
+    const pets = this.state.petList;
+    pets.push(newPet);
+    this.setState({petList: pets});
+  }
+
   render() {
     const { currentPet } = this.state;
 
@@ -58,7 +66,7 @@ class App extends Component {
           <PetList petInfo = {this.state.petList} petDetails = {this.setCurrentPet}removingPet = {this.removesPet}/>
         </section>
         <section className="new-pet-form-wrapper">
-          { /* Wave 3:  Where NewPetForm should appear */ }
+          <NewPetForm createPet = {this.createNewPet}/>
         </section>
       </main>
     );
