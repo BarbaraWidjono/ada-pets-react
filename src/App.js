@@ -16,15 +16,24 @@ class App extends Component {
 
     this.state = {
       petList: pets,
-      currentPet: undefined,
-    };
+      currentPet: null,
+      }
   }
 
-
-
+  setCurrentPet = (pet) => {
+    this.setState({currentPet: pet})
+    // console.log("Inside setCurrentPet inside App.js");
+    // console.log(pet);
+    // console.log(this.state.currentPet);
+  }
 
   render() {
     const { currentPet } = this.state;
+
+    let pet;
+    if(currentPet){
+      pet = <PetDetails currentPet={this.state.currentPet} />;
+    }
 
     return (
       <main className="App">
@@ -35,9 +44,11 @@ class App extends Component {
           { /* Wave 4:  Place to add the SearchBar component */ }
           <SearchBar />
         </section>
-          { /* Wave 2:  Where Pet Details should appear */ }
+        <section>
+          {pet}
+        </section>
         <section className="pet-list-wrapper">
-          <PetList petInfo = {this.state.petList} />
+          <PetList petInfo = {this.state.petList} petDetails = {this.setCurrentPet}/>
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */ }

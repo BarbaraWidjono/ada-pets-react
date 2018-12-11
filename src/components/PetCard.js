@@ -11,12 +11,12 @@ import speciesEmoji from '../speciesEmoji';
 const PetCard = (props) => {
   const { id, name, species, about, location } = props;
 
-  const showDetails = (event) => {
+// The showDetails() is a 'closure' within the PetCard, therefore the showDetails function 'comes with' each 'instance' of PetCard. So when calling showDetails, the id can simply be accessed with showDetails = (id) => {}
+  const showDetails = () => {
     console.log("Inside showDetails");
-    console.log(event.target.id);
-    props.detailsCallback(`${event.target.id}`)
+    props.detailsCallback()
   }
-
+  // SYNTAX NOTES: onClick={() => showDetails(id)} is a 'closure'. The showDetails function will only be invoked when the button is clicked
   return (
     <div className="card pet-card">
 
@@ -25,7 +25,6 @@ const PetCard = (props) => {
       { speciesEmoji(species) } {id} - {name}
         <button
           className="btn btn-primary pet-card--select-pet-btn"
-          id = {id}
           onClick={showDetails}
           >
             Select
