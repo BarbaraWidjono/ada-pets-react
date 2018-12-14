@@ -18,6 +18,12 @@ const PetList = (props) => {
     props.removingPet(id);
   }
 
+  // Can use the spread operator {...pet}. The spread operator will pass the attributes of the pet to the child component.
+  //     return <PetCard
+  //             key={i}
+  //             {...pet}
+  //             detailsCallback = {() => details(pet)}
+  //             removePetCallback = {removeAPet}/>
   const petCollection = pets.map((pet, i) => {
     return <PetCard
       key={i}
